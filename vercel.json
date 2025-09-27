@@ -48,17 +48,6 @@
       "dest": "/assets/$1"
     }
   ],
-  "functions": {
-    "index.php": {
-      "maxDuration": 30
-    },
-    "monke/index.php": {
-      "maxDuration": 30
-    },
-    "monke/main.php": {
-      "maxDuration": 30
-    }
-  },
   "env": {
     "PHP_VERSION": "8.2"
   }
