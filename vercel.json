@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "version": 2,
   "builds": [
@@ -63,3 +64,70 @@
     "PHP_VERSION": "8.2"
   }
 }
+=======
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "monke/index.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "monke/main.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "*.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.php"
+    },
+    {
+      "src": "/monke",
+      "dest": "/monke/index.php"
+    },
+    {
+      "src": "/monke/main",
+      "dest": "/monke/main.php"
+    },
+    {
+      "src": "/monke/(.*)",
+      "dest": "/monke/$1"
+    },
+    {
+      "src": "/payment/(.*)",
+      "dest": "/payment/$1"
+    },
+    {
+      "src": "/(.*\\.php)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    }
+  ],
+  "functions": {
+    "index.php": {
+      "maxDuration": 30
+    },
+    "monke/index.php": {
+      "maxDuration": 30
+    },
+    "monke/main.php": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "PHP_VERSION": "8.2"
+  }
+}
+>>>>>>> d185baa78461de60ae4b2b726c6f4909e0cc5f44

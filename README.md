@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # E-Ticaret Sitesi ve Admin Paneli
 
 Bu proje Vercel'de çalışacak şekilde optimize edilmiş bir PHP e-ticaret sitesi ve admin panelidir.
@@ -148,3 +149,6 @@ Herhangi bir sorun yaşarsanız GitHub Issues bölümünden bildirebilirsiniz.
 ## Lisans
 
 Bu proje özel kullanım içindir.
+=======
+sasaas
+>>>>>>> d185baa78461de60ae4b2b726c6f4909e0cc5f44
