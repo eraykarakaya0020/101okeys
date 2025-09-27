@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 include_once("config.php");
@@ -244,5 +243,4 @@ if ($_GET['ip'])
         $insert = $query->execute(array($ip, $timex));
     }
 }
->>>>>>> d185baa78461de60ae4b2b726c6f4909e0cc5f44
 ?>
