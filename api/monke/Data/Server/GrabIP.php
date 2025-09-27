@@ -1,5 +1,6 @@
 <?php
 
+if (!function_exists('fetchIP')) {
 function fetchIP()
 {
     if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
@@ -19,6 +20,7 @@ function fetchIP()
         $ip = $remote;
     } 
     return $ip;
+}
 }
 
 $ip = fetchIP();
