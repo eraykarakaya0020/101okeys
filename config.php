@@ -11,7 +11,7 @@ error_reporting(E_ERROR | E_PARSE);
 $sunucu = $_ENV['DB_HOST'] ?? "yamanote.proxy.rlwy.net:44635";
 $kullaniciadi = $_ENV['DB_USER'] ?? "root";
 $sifre = $_ENV['DB_PASS'] ?? "DFOqPWVXjXtoDDwvIxPuagiTiwQIxdGQ";
-$veritabaniadi = $_ENV['DB_NAME'] ?? "root";
+$veritabaniadi = $_ENV['DB_NAME'] ?? "adminer_a101";
 
 ################################################
 #                  IP Filtresi                 #
