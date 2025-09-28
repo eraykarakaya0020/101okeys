@@ -1,6 +1,6 @@
 <?php
-include_once('../../config.php');
-include '../Data/Server/GrabIP.php';
+include_once(__DIR__ . '/../../config.php');
+include_once(__DIR__ . '/../Data/Server/GrabIP.php');
 session_start();
 
 if (!function_exists('getUserIP')) {
