@@ -1,0 +1,25 @@
+{
+    "name": "a101-ecommerce/php-app",
+    "description": "A101 E-ticaret Sitesi ve Admin Paneli",
+    "type": "project",
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": []
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

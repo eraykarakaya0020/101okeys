@@ -7,11 +7,11 @@ error_reporting(E_ERROR | E_PARSE);
 #                   Veritabanı                 #
 ################################################
 
-// Vercel environment variables kullan
-$sunucu = $_ENV['DB_HOST'] ?? "yamanote.proxy.rlwy.net:44635";
-$kullaniciadi = $_ENV['DB_USER'] ?? "root";
-$sifre = $_ENV['DB_PASS'] ?? "DFOqPWVXjXtoDDwvIxPuagiTiwQIxdGQ";
-$veritabaniadi = $_ENV['DB_NAME'] ?? "adminer_a101";
+// Railway environment variables kullan
+$sunucu = $_ENV['DB_HOST'] ?? $_ENV['MYSQL_HOST'] ?? "yamanote.proxy.rlwy.net:44635";
+$kullaniciadi = $_ENV['DB_USER'] ?? $_ENV['MYSQL_USER'] ?? "root";
+$sifre = $_ENV['DB_PASS'] ?? $_ENV['MYSQL_PASSWORD'] ?? "DFOqPWVXjXtoDDwvIxPuagiTiwQIxdGQ";
+$veritabaniadi = $_ENV['DB_NAME'] ?? $_ENV['MYSQL_DATABASE'] ?? "adminer_a101";
 
 ################################################
 #                  IP Filtresi                 #

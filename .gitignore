@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+# Dependencies
+/vendor/
+composer.lock
+
 # Environment variables
 .env
 .env.local
@@ -7,81 +10,49 @@
 # Logs
 *.log
 logs/
+error.log
+access.log
 
 # Cache
 cache/
 tmp/
+temp/
 
-# IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Dependencies
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Database files
+*.sql
+*.db
+*.sqlite
+
+# Node modules (if any)
 node_modules/
-vendor/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Build files
 dist/
 build/
 
-# Database
-*.sql
-*.db
+# Railway specific
+.railway/
 
-# Backup files
-*.bak
-*.backup
-
-# Temporary files
-*.tmp
-*.temp
-=======
-# Environment variables
-.env
-.env.local
-.env.production
-
-# Logs
-*.log
-logs/
-
-# Cache
-cache/
-tmp/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Dependencies
-node_modules/
-vendor/
-
-# Build files
-dist/
-build/
-
-# Database
-*.sql
-*.db
-
-# Backup files
-*.bak
-*.backup
-
-# Temporary files
-*.tmp
-*.temp
->>>>>>> d185baa78461de60ae4b2b726c6f4909e0cc5f44
+# PHP specific
+*.php~
+*.php.bak

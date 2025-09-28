@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # E-Ticaret Sitesi ve Admin Paneli
 
-Bu proje Vercel'de çalışacak şekilde optimize edilmiş bir PHP e-ticaret sitesi ve admin panelidir.
+Bu proje Railway'de çalışacak şekilde optimize edilmiş bir PHP e-ticaret sitesi ve admin panelidir.
 
 ## Özellikler
 
@@ -12,7 +11,7 @@ Bu proje Vercel'de çalışacak şekilde optimize edilmiş bir PHP e-ticaret sit
 - 🔐 Güvenli giriş sistemi
 - 📱 Responsive tasarım
 
-## Vercel'de Deployment
+## Railway'de Deployment
 
 ### 1. GitHub'a Yükleme
 
@@ -25,16 +24,17 @@ git remote add origin https://github.com/kullaniciadi/repo-adi.git
 git push -u origin main
 ```
 
-### 2. Vercel'de Proje Oluşturma
+### 2. Railway'de Proje Oluşturma
 
-1. [Vercel Dashboard](https://vercel.com/dashboard)'a gidin
+1. [Railway Dashboard](https://railway.app/dashboard)'a gidin
 2. "New Project" butonuna tıklayın
-3. GitHub repository'nizi seçin
-4. "Deploy" butonuna tıklayın
+3. "Deploy from GitHub repo" seçin
+4. GitHub repository'nizi seçin
+5. "Deploy Now" butonuna tıklayın
 
 ### 3. Environment Variables Ayarlama
 
-Vercel Dashboard > Project > Settings > Environment Variables bölümünde şu değişkenleri ekleyin:
+Railway Dashboard > Project > Variables bölümünde şu değişkenleri ekleyin:
 
 ```
 DB_HOST=your_database_host
@@ -43,7 +43,13 @@ DB_PASS=your_database_password
 DB_NAME=your_database_name
 ```
 
-### 4. Veritabanı Kurulumu
+### 4. MySQL Veritabanı Ekleme
+
+1. Railway Dashboard'da "New" > "Database" > "Add MySQL" seçin
+2. Veritabanı oluşturulduktan sonra connection bilgilerini kopyalayın
+3. Bu bilgileri Environment Variables olarak ekleyin
+
+### 5. Veritabanı Kurulumu
 
 Projenin çalışması için aşağıdaki tabloları oluşturmanız gerekiyor:
 
@@ -149,6 +155,3 @@ Herhangi bir sorun yaşarsanız GitHub Issues bölümünden bildirebilirsiniz.
 ## Lisans
 
 Bu proje özel kullanım içindir.
-=======
-sasaas
->>>>>>> d185baa78461de60ae4b2b726c6f4909e0cc5f44
