@@ -42,14 +42,18 @@
 <head>
    <meta charSet="utf-8" />
    <meta name="viewport" content="width=device-width" />
-   <title>A101 HARCA HARCA BİTMEZ</title>
+   <title id="dynamic-title">A101 Ekstra - Harca Harca Bitmez</title>
+   <meta name="description" content="A101 Ekstra - En uygun fiyatlarla online alışveriş yapın. Harca harca bitmez kampanyaları!" />
+   <meta name="keywords" content="a101, ekstra, alışveriş, online, market, kampanya, indirim" />
+   <meta name="robots" content="index, follow" />
    <meta name="next-head-count" content="11" />
-   <link rel="preload" href="./assets/css/47Kb1JsK8kaH.css" as="style" />
-   <link rel="stylesheet" href="./assets/css/47Kb1JsK8kaH.css" data-n-g="" />
-   <link rel="preload" href="./assets/css/J2kGLr82eY3z.css" as="style" />
-   <link rel="stylesheet" href="./assets/css/J2kGLr82eY3z.css" data-n-p="" />
+   <link rel="preload" href="./assets/css/proxy.php?f=tailwind" as="style" />
+   <link rel="stylesheet" href="./assets/css/proxy.php?f=tailwind" data-n-g="" />
+   <link rel="preload" href="./assets/css/proxy.php?f=bootstrap" as="style" />
+   <link rel="stylesheet" href="./assets/css/proxy.php?f=bootstrap" data-n-p="" />
    <noscript data-n-css=""></noscript>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="./api/js-proxy.php?lib=jquery"></script>
+   <script src="./assets/js/dynamic-title.js"></script>
 </head>
 
 <body>
