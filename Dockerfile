@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
 # Sistem paketlerini güncelle ve gerekli paketleri yükle
 RUN apt-get update && apt-get install -y \
@@ -25,11 +25,11 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # İzinleri ayarla
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+RUN chmod -R 755 /var/www/html
 
-# Port'u expose et
-EXPOSE 8000
+# Railway için port ayarı
+ENV PORT=8000
+EXPOSE $PORT
 
 # Uygulamayı başlat
-CMD ["php", "-S", "0.0.0.0:8000"]
+CMD ["php", "-S", "0.0.0.0:$PORT"]
