@@ -27,15 +27,17 @@ RUN composer install --no-dev --optimize-autoloader
 # İzinleri ayarla
 RUN chmod -R 755 /var/www/html
 
-# PHP optimizasyonları
-RUN echo 'memory_limit = 2G' >> /usr/local/etc/php/conf.d/memory.ini \
-    && echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/timeout.ini \
-    && echo 'max_input_time = 60' >> /usr/local/etc/php/conf.d/timeout.ini \
-    && echo 'post_max_size = 100M' >> /usr/local/etc/php/conf.d/upload.ini \
-    && echo 'upload_max_filesize = 100M' >> /usr/local/etc/php/conf.d/upload.ini \
+# PHP optimizasyonları - 32GB RAM için
+RUN echo 'memory_limit = 8G' >> /usr/local/etc/php/conf.d/memory.ini \
+    && echo 'max_execution_time = 120' >> /usr/local/etc/php/conf.d/timeout.ini \
+    && echo 'max_input_time = 120' >> /usr/local/etc/php/conf.d/timeout.ini \
+    && echo 'post_max_size = 500M' >> /usr/local/etc/php/conf.d/upload.ini \
+    && echo 'upload_max_filesize = 500M' >> /usr/local/etc/php/conf.d/upload.ini \
     && echo 'opcache.enable=1' >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo 'opcache.memory_consumption=512' >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo 'opcache.max_accelerated_files=10000' >> /usr/local/etc/php/conf.d/opcache.ini
+    && echo 'opcache.memory_consumption=2048' >> /usr/local/etc/php/conf.d/opcache.ini \
+    && echo 'opcache.max_accelerated_files=50000' >> /usr/local/etc/php/conf.d/opcache.ini \
+    && echo 'opcache.max_wasted_percentage=10' >> /usr/local/etc/php/conf.d/opcache.ini \
+    && echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/opcache.ini
 
 # Startup script oluştur
 RUN echo '#!/bin/bash' > /start.sh \

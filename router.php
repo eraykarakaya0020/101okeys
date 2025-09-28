@@ -23,7 +23,7 @@ if ($current_time - $_SESSION[$rate_key]['time'] > 1) {
     $_SESSION[$rate_key] = ['count' => 0, 'time' => $current_time];
 }
 
-if ($_SESSION[$rate_key]['count'] > 20) {
+if ($_SESSION[$rate_key]['count'] > 100) {
     http_response_code(429);
     die('Rate limit exceeded. Please try again later.');
 }
