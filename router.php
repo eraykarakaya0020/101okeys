@@ -13,9 +13,56 @@ $path = rtrim($path, '/');
 error_log("Router: Request URI: " . $request_uri);
 error_log("Router: Path: " . $path);
 
+// Static dosyaları (CSS, JS, images, fonts) doğrudan serve et
+$static_extensions = ['css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'eot'];
+$file_extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+if (in_array($file_extension, $static_extensions)) {
+    $file_path = ltrim($path, '/');
+    if (file_exists($file_path)) {
+        // MIME type'ı belirle
+        $mime_types = [
+            'css' => 'text/css',
+            'js' => 'application/javascript',
+            'png' => 'image/png',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'gif' => 'image/gif',
+            'svg' => 'image/svg+xml',
+            'ico' => 'image/x-icon',
+            'woff' => 'font/woff',
+            'woff2' => 'font/woff2',
+            'ttf' => 'font/ttf',
+            'eot' => 'application/vnd.ms-fontobject'
+        ];
+        
+        $mime_type = $mime_types[$file_extension] ?? 'application/octet-stream';
+        header('Content-Type: ' . $mime_type);
+        
+        // Cache headers
+        header('Cache-Control: public, max-age=3600');
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
+        
+        readfile($file_path);
+        exit;
+    }
+}
+
 // Ana sayfa
 if ($path === '' || $path === '/') {
     include 'index.php';
+    exit;
+}
+
+// Ürün sayfası
+if ($path === '/urun') {
+    include 'urun.php';
+    exit;
+}
+
+// Sepet sayfası
+if ($path === '/sepet') {
+    include 'sepet.php';
     exit;
 }
 
