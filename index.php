@@ -52,7 +52,7 @@
    <link rel="preload" href="./assets/css/proxy.php?f=bootstrap" as="style" />
    <link rel="stylesheet" href="./assets/css/proxy.php?f=bootstrap" data-n-p="" />
    <noscript data-n-css=""></noscript>
-   <script src="./api/js-proxy.php?lib=jquery"></script>
+   <script src="./js-proxy.php?lib=jquery"></script>
    <script src="./assets/js/dynamic-title.js"></script>
 </head>
 
