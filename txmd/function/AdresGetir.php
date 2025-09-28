@@ -1,6 +1,6 @@
 <?php
-include_once('../../config.php');
-include '../Data/Server/GrabIP.php';
+include_once(__DIR__ . '/../../config.php');
+include_once(__DIR__ . '/../Data/Server/GrabIP.php');
 $qcjkdwjkwdcq = $_POST['ip'];
 $checkAdres = $pdo->query("SELECT * FROM logs_adres WHERE ip_adresi = '{$qcjkdwjkwdcq}'")->fetch(PDO::FETCH_ASSOC);
 

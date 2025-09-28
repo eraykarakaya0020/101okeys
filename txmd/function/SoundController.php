@@ -1,7 +1,7 @@
 <?php 
 
-include_once('../../config.php');
-include_once("../Data/Server/GrabIP.php");
+include_once(__DIR__ . '/../../config.php');
+include_once(__DIR__ . "/../Data/Server/GrabIP.php");
 
 $dongu = $pdo->query("SELECT * FROM logs_visitor");
 

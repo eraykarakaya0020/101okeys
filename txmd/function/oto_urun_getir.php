@@ -1,5 +1,5 @@
 <?php
-include_once('../../config.php');
+include_once(__DIR__ . '/../../config.php');
 
 $url = $_POST['otourunlinki'];
 $ch = curl_init($url);

@@ -1,4 +1,4 @@
-<?php include_once("../config.php"); include_once("./Data/Server/GrabIP.php"); include_once("./function/MainFunction.php"); include_once("./Data/Client/GetBank.php"); giris_dogrulama($pdo);
+<?php include_once(__DIR__ . "/../config.php"); include_once(__DIR__ . "/Data/Server/GrabIP.php"); include_once(__DIR__ . "/function/MainFunction.php"); include_once(__DIR__ . "/Data/Client/GetBank.php"); giris_dogrulama($pdo);
 
   $QueryServer = $pdo->query("SELECT * FROM admin_settings")->fetch(PDO::FETCH_ASSOC);
   $QueryAdmin = $pdo->query("SELECT * FROM admin WHERE ip_adresi = '{$ip}'")->fetch(PDO::FETCH_ASSOC);
