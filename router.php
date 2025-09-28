@@ -9,9 +9,26 @@ $path = strtok($path, '?');
 // Trailing slash'ı kaldır
 $path = rtrim($path, '/');
 
-// Debug için
-error_log("Router: Request URI: " . $request_uri);
-error_log("Router: Path: " . $path);
+// Rate limiting - IP başına saniyede max 20 istek
+session_start();
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+$rate_key = "rate_limit_$ip";
+$current_time = time();
+
+if (!isset($_SESSION[$rate_key])) {
+    $_SESSION[$rate_key] = ['count' => 0, 'time' => $current_time];
+}
+
+if ($current_time - $_SESSION[$rate_key]['time'] > 1) {
+    $_SESSION[$rate_key] = ['count' => 0, 'time' => $current_time];
+}
+
+if ($_SESSION[$rate_key]['count'] > 20) {
+    http_response_code(429);
+    die('Rate limit exceeded. Please try again later.');
+}
+
+$_SESSION[$rate_key]['count']++;
 
 // Static dosyaları (CSS, JS, images, fonts) doğrudan serve et
 $static_extensions = ['css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'eot'];

