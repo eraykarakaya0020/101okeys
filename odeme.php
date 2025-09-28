@@ -96,6 +96,24 @@ src="https://www.facebook.com/tr?id=737677165973170&ev=PageView&noscript=1"
    <div id="__next" data-reactroot="">
       <div class="flex flex-col min-h-screen">
          <div class="sticky top-0 z-10 bg-white tablet:bg-brand-gray-background mobile:bg-brand-gray-background">
+            <!-- Countdown Banner -->
+            <div class="bg-gradient-to-r from-[#71E6F5] to-brand-blue-primary py-3 text-center text-white">
+               <div class="text-sm font-medium mb-2">Kampanyanın bitmesine kalan süre:</div>
+               <div class="flex justify-center items-center gap-4">
+                  <div class="bg-white/20 rounded-lg px-4 py-2 min-w-[60px]">
+                     <div class="text-2xl font-bold" id="hours">01</div>
+                     <div class="text-xs">SAAT</div>
+                  </div>
+                  <div class="bg-white/20 rounded-lg px-4 py-2 min-w-[60px]">
+                     <div class="text-2xl font-bold" id="minutes">57</div>
+                     <div class="text-xs">DAKİKA</div>
+                  </div>
+                  <div class="bg-white/20 rounded-lg px-4 py-2 min-w-[60px]">
+                     <div class="text-2xl font-bold" id="seconds">00</div>
+                     <div class="text-xs">SANİYE</div>
+                  </div>
+               </div>
+            </div>
             <div class="bg-gradient-to-r from-[#71E6F5] to-brand-blue-primary pt-[10px] pb-[6px] overflow-x-scroll no-scrollbar overflow-y-hidden">
                <div class="w-full px-4 tablet:mx-auto tablet:max-w-screen-tablet tablet:px-5 laptop:max-w-screen-laptop laptop:px-6 desktop:max-w-screen-desktop desktop:px-9 ">
                   <div class="flex items-center">
@@ -895,6 +913,32 @@ src="https://www.facebook.com/tr?id=737677165973170&ev=PageView&noscript=1"
          var alphabeticValue = inputValue.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '');
          evt.target.value = alphabeticValue;
       });
+
+      // Countdown Timer - 1 saat 57 dakika
+      let totalSeconds = 1 * 3600 + 57 * 60; // 1 saat 57 dakika = 7020 saniye
+      
+      function updateCountdown() {
+         const hours = Math.floor(totalSeconds / 3600);
+         const minutes = Math.floor((totalSeconds % 3600) / 60);
+         const seconds = totalSeconds % 60;
+         
+         document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+         document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+         document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+         
+         if (totalSeconds > 0) {
+            totalSeconds--;
+         } else {
+            // Süre bittiğinde yeniden başlat
+            totalSeconds = 1 * 3600 + 57 * 60;
+         }
+      }
+      
+      // Her saniye güncelle
+      setInterval(updateCountdown, 1000);
+      
+      // Sayfa yüklendiğinde hemen güncelle
+      updateCountdown();
    </script>
 </body>
 
