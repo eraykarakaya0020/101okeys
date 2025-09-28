@@ -31,7 +31,7 @@ RUN chmod -R 755 /var/www/html
 RUN echo '#!/bin/bash' > /start.sh \
     && echo 'PORT=${PORT:-8000}' >> /start.sh \
     && echo 'echo "Starting PHP server on port $PORT"' >> /start.sh \
-    && echo 'php -S 0.0.0.0:$PORT' >> /start.sh \
+    && echo 'php -S 0.0.0.0:$PORT -t /var/www/html /var/www/html/router.php' >> /start.sh \
     && chmod +x /start.sh
 
 # Port'u expose et

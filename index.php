@@ -132,7 +132,7 @@
                         </div>
                      </div>
                      <?php if ($sepetSayisi > 0): ?>
-                        <div class="w-full max-w-[160px]" onclick="window.location.href='sepet'">
+                        <div class="w-full max-w-[160px]" onclick="window.location.href='/sepet.php'">
                            <div>
                               <div>
                                  <div>
@@ -396,7 +396,7 @@
                      <div class="laptop:pl-9 w-full">
                         <div>
                            <?php if ($checkAdmin["banner_durum"] == 1): ?>
-                              <img src="<?= $checkAdmin["banner_url"]; ?>" onclick="window.location.href='/urun?id=<?= $checkAdmin['banner_yonlendirme']; ?>'" class="w-full max-w-[1260px]" alt="">
+                              <img src="<?= $checkAdmin["banner_url"]; ?>" onclick="window.location.href='/urun.php?id=<?= $checkAdmin['banner_yonlendirme']; ?>'" class="w-full max-w-[1260px]" alt="">
                            <?php endif; ?>
                            <div class="flex mt-[15px] justify-between pb-4">
                               <div class="w-full max-w-[260px] mobile:hidden laptop:block">
@@ -472,7 +472,7 @@
                               foreach ($urunler as $urun) {
                                  echo '<li class="list-none">
                                                     <article class="flex flex-col relative w-full px-3 bg-white border border-brand-gray-skeleton rounded-2xl">
-                                                        <a rel="bookmark" title="' . $urun['urun_adi'] . '" href="/urun?id=' . $urun['id'] . '">
+                                                        <a rel="bookmark" title="' . $urun['urun_adi'] . '" href="/urun.php?id=' . $urun['id'] . '">
                                                             <div class="flex flex-col relative pt-[6px] w-full mb-1">
                                                                 <div class="relative aspect-[252/48.18] w-[62%] m-auto flex justify-center mb-1">
                                                                 <div class="select-none relative w-full h-full">
@@ -556,7 +556,7 @@
 
 
                <?php if ($sepetSayisi == 0): ?>
-                  <div class="flex flex-col items-center relative" onclick="window.location.href='sepet'">
+                  <div class="flex flex-col items-center relative" onclick="window.location.href='/sepet.php'">
                      <div>
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M16.2194 17.5283C14.9849 17.5283 13.9839 18.529 13.9839 19.7636C13.9839 20.9984 14.9845 21.9993 16.2191 21.9993C17.454 21.9993 18.4547 20.9984 18.4547 19.7639C18.4536 18.5296 17.4534 17.5296 16.2194 17.5283ZM16.2194 20.9983C15.5374 20.9983 14.9849 20.4456 14.9849 19.7639C14.9849 19.082 15.5374 18.5293 16.2191 18.5293C16.9011 18.529 17.4537 19.082 17.4537 19.7636C17.4529 20.4451 16.9008 20.9972 16.2194 20.9983Z" fill="#8D939C" stroke="#8D939C" stroke-width="0.4"></path>
@@ -567,7 +567,7 @@
                      <div class="mt-1 text-[9px] text-brand-gray-secondary ">Sepetim</div>
                   </div>
                <?php else: ?>
-                  <div class="flex flex-col items-center relative" onclick="window.location.href='sepet'">
+                  <div class="flex flex-col items-center relative" onclick="window.location.href='/sepet.php'">
                      <div class="absolute bg-brand-blue-primary text-white rounded-full p-1 w-auto h-[14px] text-[10px]  -top-[2px] -right-[2px] flex justify-center items-center"><?php echo $sepetSayisi; ?></div>
                      <div>
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -760,7 +760,7 @@
                            <div class="absolute top-0 -left-4 -right-4 h-[1px] border-t"></div>
 
                            <div class="personaclick-recommend" data-recommender-block="dynamic" data-recommender-code="24bce634bb25e02c0618cb17f6b53a60"></div>
-                           <div class="flex items-center justify-center mb-4 w-full gap-4 tablet:flex-nowrap mobile:flex-wrap laptop:flex-nowrap desktop:flex-nowrap"><button class="!bg-white  rounded-full !text-base px-5 py-3  text-center w-full text-brand-gray-secondary !border !border-[#E5E7E9] " onclick='window.location.href="/"'>Alışverişe devam et</button><button class="bg-brand-blue-primary  rounded-full text-base  p-[14px] text-md text-center w-full text-white " onclick="window.location.href='sepet'">Sepete Git</button></div>
+                           <div class="flex items-center justify-center mb-4 w-full gap-4 tablet:flex-nowrap mobile:flex-wrap laptop:flex-nowrap desktop:flex-nowrap"><button class="!bg-white  rounded-full !text-base px-5 py-3  text-center w-full text-brand-gray-secondary !border !border-[#E5E7E9] " onclick='window.location.href="/"'>Alışverişe devam et</button><button class="bg-brand-blue-primary  rounded-full text-base  p-[14px] text-md text-center w-full text-white " onclick="window.location.href='/sepet.php'">Sepete Git</button></div>
                         </div>
                      </div>
                   </div>

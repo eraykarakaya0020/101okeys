@@ -36,19 +36,19 @@ function giris_dogrulama($pdo)
 	global $ip;
 	
 	if (!isset($_SESSION['giris_yapildi']) || !isset($_SESSION['kullanici']) || !isset($_SESSION['id'])) {
-		header('Location: /txmd');
+		header('Location: /txmd/');
 		exit;
 	}
 
 	if (!isset($_SESSION['ip']) || $_SESSION['ip'] !== $ip) {
 		session_destroy();
-		header('Location: /txmd');
+		header('Location: /txmd/');
 		exit;
 	}
 
 	if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 1800)) {
 		session_destroy();
-		header('Location: /txmd');
+		header('Location: /txmd/');
 		exit;
 	}
 

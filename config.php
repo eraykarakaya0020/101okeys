@@ -3,6 +3,12 @@
 date_default_timezone_set('Europe/Istanbul');
 error_reporting(E_ERROR | E_PARSE);
 
+// Session ayarları
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 0); // Railway'de HTTPS olmayabilir
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_samesite', 'Lax');
+
 // PDO MySQL driver kontrolü
 if (!extension_loaded('pdo_mysql')) {
     die('PDO MySQL driver yüklü değil. Railway\'de MySQL extension\'ı aktif edin.');
