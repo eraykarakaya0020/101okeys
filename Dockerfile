@@ -27,9 +27,15 @@ RUN composer install --no-dev --optimize-autoloader
 # İzinleri ayarla
 RUN chmod -R 755 /var/www/html
 
-# Railway için port ayarı
-ENV PORT=8000
-EXPOSE $PORT
+# Startup script oluştur
+RUN echo '#!/bin/bash' > /start.sh \
+    && echo 'PORT=${PORT:-8000}' >> /start.sh \
+    && echo 'echo "Starting PHP server on port $PORT"' >> /start.sh \
+    && echo 'php -S 0.0.0.0:$PORT' >> /start.sh \
+    && chmod +x /start.sh
+
+# Port'u expose et
+EXPOSE 8000
 
 # Uygulamayı başlat
-CMD ["php", "-S", "0.0.0.0:$PORT"]
+CMD ["/start.sh"]

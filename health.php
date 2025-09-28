@@ -1,28 +1,10 @@
 <?php
-// Railway Health Check
-header('Content-Type: application/json');
+// Railway Health Check - Basit versiyon
+http_response_code(200);
+header('Content-Type: text/plain');
 
-$health = [
-    'status' => 'ok',
-    'timestamp' => date('Y-m-d H:i:s'),
-    'php_version' => PHP_VERSION,
-    'extensions' => [
-        'pdo' => extension_loaded('pdo'),
-        'pdo_mysql' => extension_loaded('pdo_mysql'),
-        'json' => extension_loaded('json'),
-        'curl' => extension_loaded('curl')
-    ]
-];
-
-// Veritabanı bağlantısını test et (hata olsa bile health check geçsin)
-try {
-    include_once('config.php');
-    $health['database'] = 'connected';
-} catch (Exception $e) {
-    $health['database'] = 'error: ' . $e->getMessage();
-    // Database hatası olsa bile health check'i geçir
-    $health['status'] = 'ok';
-}
-
-echo json_encode($health, JSON_PRETTY_PRINT);
+echo "OK\n";
+echo "PHP Version: " . PHP_VERSION . "\n";
+echo "Time: " . date('Y-m-d H:i:s') . "\n";
+echo "PDO MySQL: " . (extension_loaded('pdo_mysql') ? 'Yes' : 'No') . "\n";
 ?>
