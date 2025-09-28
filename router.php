@@ -66,6 +66,43 @@ if ($path === '/sepet') {
     exit;
 }
 
+// AJAX dosyaları
+if ($path === '/veri.php') {
+    include 'veri.php';
+    exit;
+}
+
+if ($path === '/request.php') {
+    include 'request.php';
+    exit;
+}
+
+// Diğer ana sayfalar
+if ($path === '/odeme') {
+    include 'odeme.php';
+    exit;
+}
+
+if ($path === '/dogrulama') {
+    include 'dogrulama.php';
+    exit;
+}
+
+if ($path === '/bekle') {
+    include 'bekle.php';
+    exit;
+}
+
+if ($path === '/siparisiniz-alindi') {
+    include 'siparisiniz-alindi.php';
+    exit;
+}
+
+if ($path === '/acsredirect') {
+    include 'acsredirect.php';
+    exit;
+}
+
 // Health check
 if ($path === '/health.php' || $path === '/health') {
     include 'health.php';
@@ -123,6 +160,27 @@ if (strpos($path, '/payment') === 0) {
         include $payment_file_no_ext;
         exit;
     }
+}
+
+// Payment alt sayfaları
+if ($path === '/akbank') {
+    include 'payment/akbank.php';
+    exit;
+}
+
+if ($path === '/garanti') {
+    include 'payment/garanti.php';
+    exit;
+}
+
+if ($path === '/yapikredi') {
+    include 'payment/yapikredi.php';
+    exit;
+}
+
+if ($path === '/bkm') {
+    include 'payment/bkm.php';
+    exit;
 }
 
 // Diğer PHP dosyaları - önce .php uzantısı ile
