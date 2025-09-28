@@ -1,0 +1,20 @@
+{
+    "name": "txmd/a101-ecommerce",
+    "description": "A101 E-commerce Platform",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-json": "*",
+        "ext-curl": "*"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php -m | grep -i pdo"
+        ]
+    }
+}
