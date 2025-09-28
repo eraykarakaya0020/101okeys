@@ -10,8 +10,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libzip-dev \
-    redis-server \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip redis
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 # Composer'ı yükle
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
